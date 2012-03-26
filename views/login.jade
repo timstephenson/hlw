@@ -1,0 +1,14 @@
+h1= title
+if (message)
+  p.error!= message
+
+form.well( method="post")
+  div
+    div
+      label Username:
+      input(type="text", name="username", id="username")
+    div
+      label Password:
+      input(type="text", name="password", id="password")
+    div#loginButton
+      input.btn(type="submit", value="Login")

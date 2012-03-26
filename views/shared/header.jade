@@ -2,3 +2,14 @@ div(class="navbar navbar-fixed-top")
   div.navbar-inner
     div.container
       a.brand(href="#") How Life Works
+      div.nav-collaps 
+        ul.nav
+          li.active
+            a(href="/") Home
+        if user
+          ul(class="nav pull-right")
+            li
+              a(href="#") Welcome #{user.username}
+            li.divider-vertical
+            li
+              a(href="/logout") Logout

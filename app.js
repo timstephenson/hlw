@@ -10,8 +10,10 @@ var express = require('express')
   , LocalStrategy = require('passport-local').Strategy;
   
 var users = [
-    { id: 1, username: 'tim', password: 'Radd_123', email: 'tim@raddonline.com' }
-  , { id: 2, username: 'marc', password: 'Marc_321', email: 'mmazzoni@gmail.com' }
+    { id: 1, username: 'Tim', password: 'Radd_123', email: 'tim@raddonline.com' }
+  , { id: 2, username: 'Marc', password: 'Marc_321', email: 'mmazzoni@gmail.com' }
+  , { id: 2, username: 'Tammy', password: 'Radd_123', email: 'tammy@raddonline.com' }
+  , { id: 2, username: 'Ellen', password: 'Radd_123', email: 'ellen@raddonline.com' }
 ];
 
 function findById(id, fn) {
@@ -102,7 +104,7 @@ app.configure('production', function(){
 // Routes
 app.get('/', ensureAuthenticated, function(req, res){
   res.render('index', { user: req.user, locals: {
-      title: 'How Life Words'
+      title: 'How Life Works'
       }
   });
 });

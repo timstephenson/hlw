@@ -14,7 +14,7 @@ function map_init() {
   );
   
   var summary_2 = new OpenLayers.Layer.Image(
-    'VisualSummary Annotations', 
+    'Visual Summary Annotations', 
     '/img/summary_2.jpg',
     new OpenLayers.Bounds(-293.4, -180, 293.4, 180),
     new OpenLayers.Size(5397, 3296),

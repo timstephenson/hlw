@@ -12,8 +12,8 @@ var express = require('express')
 var users = [
     { id: 1, username: 'Tim', password: 'Radd_123', email: 'tim@raddonline.com' }
   , { id: 2, username: 'Marc', password: 'Marc_321', email: 'mmazzoni@gmail.com' }
-  , { id: 2, username: 'Tammy', password: 'Radd_123', email: 'tammy@raddonline.com' }
-  , { id: 2, username: 'Ellen', password: 'Radd_123', email: 'ellen@raddonline.com' }
+  , { id: 3, username: 'Tammy', password: 'Radd_123', email: 'tammy@raddonline.com' }
+  , { id: 4, username: 'Ellen', password: 'Radd_123', email: 'ellen@raddonline.com' }
 ];
 
 function findById(id, fn) {

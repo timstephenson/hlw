@@ -47,7 +47,7 @@ function map_init() {
       maxResolution:.625,
       opacity: 1.0,
       displayInLayerSwitcher: false,
-      //maxScale:110000000
+      maxScale:70000000
     }
   );
   

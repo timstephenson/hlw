@@ -31,23 +31,7 @@ function map_init() {
       maxResolution:.625,
       opacity: 1.0,
       displayInLayerSwitcher: false,
-      minScale:70000000
-    }
-  );
-  
-  var summary_labels = new OpenLayers.Layer.Image(
-    ' Details', 
-    '/img/summary_labels.png',
-    new OpenLayers.Bounds(-293.4, -180, 293.4, 180),
-    new OpenLayers.Size(5397, 3296),
-    {
-      scales: [190000000, 150000000, 110000000, 70000000, 30000000, 5000000],
-      isBaseLayer:false,
-      numZoomLevels:6, 
-      maxResolution:.625,
-      opacity: 1.0,
-      displayInLayerSwitcher: false,
-      maxScale:70000000
+      minScale:110000000
     }
   );
   
@@ -66,7 +50,7 @@ function map_init() {
   );
   
   
-  map.addLayers([summary_1, summary_labels, summary_3, summary_2]);
+  map.addLayers([summary_1, summary_3, summary_2]);
   
   map.addControl(new OpenLayers.Control.LayerSwitcher({}));
   

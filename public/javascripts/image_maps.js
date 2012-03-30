@@ -31,7 +31,7 @@ function map_init() {
       maxResolution:.625,
       opacity: 1.0,
       displayInLayerSwitcher: false,
-      minScale:110000000
+      minScale:70000000
     }
   );
   
@@ -44,7 +44,7 @@ function map_init() {
       numZoomLevels:6, 
       maxResolution:.625,
       isBaseLayer:false,
-      visibility: false,
+      visibility: true,
       opacity: 0.8
     }
   );

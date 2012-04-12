@@ -104,13 +104,22 @@ app.configure('production', function(){
 // Routes
 app.get('/', ensureAuthenticated, function(req, res){
   res.render('index', { user: req.user, locals: {
-      title: 'How Life Works'
+      title: 'How Life Works',
+      current_page: 'home'
+      }
+  });
+});
+
+app.get('/open_layers', ensureAuthenticated, function(req, res){
+  res.render('open_layers', { user: req.user, locals: {
+      title: 'How Life Works',
+      current_page: 'open'
       }
   });
 });
 
 app.get('/login', function(req, res){
-  res.render('login', { user: req.user, message: req.flash('error'), title: "Please login" });
+  res.render('login', { user: req.user, message: req.flash('error'), title: "Please login", current_page: 'login' });
 });
 
 // POST /login

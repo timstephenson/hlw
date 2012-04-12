@@ -1,6 +1,7 @@
 .page {
   padding-top: 70px;
 }
+#gmap,
 #map {
   width: 100%;
   height: 580px;

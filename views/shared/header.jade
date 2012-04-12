@@ -4,8 +4,19 @@ div(class="navbar navbar-fixed-top")
       a.brand(href="#") How Life Works
       div.nav-collaps 
         ul.nav
-          li.active
+          - var home = ""
+          - var open = ""
+          
+          - if (page == "home")
+            - home = "active"
+          
+          - if (page == "open")
+            - var open = "active"
+            
+          li(class=home)
             a(href="/") Home
+          li(class=open)
+            a(href="/open_layers") Open Layers
         if user
           ul(class="nav pull-right")
             li

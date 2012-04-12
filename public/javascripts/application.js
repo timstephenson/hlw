@@ -142,39 +142,39 @@ function load() {
     // Setup info window
     infowindow = new google.maps.InfoWindow();
     //Add marker for video clip a
-    var marker = new google.maps.Marker({
+    var marker1 = new google.maps.Marker({
          map:map,
          position: new google.maps.LatLng(-35,-96),
          title: "Transcription Video"
      }); 
 
-    google.maps.event.addListener(marker, 'click', function() {
+    google.maps.event.addListener(marker1, 'click', function() {
         infowindow.setContent(video_player("clip-a"));
-        infowindow.open(map, marker);
+        infowindow.open(map, marker1);
     });
     
     //Add marker for video clip b
-    var marker = new google.maps.Marker({
+    var marker2 = new google.maps.Marker({
          map:map,
          position: new google.maps.LatLng(50,80),
          title: "Encoding RNA Video"
      }); 
 
-    google.maps.event.addListener(marker, 'click', function() {
+    google.maps.event.addListener(marker2, 'click', function() {
         infowindow.setContent(video_player("clip-b"));
-        infowindow.open(map, marker);
+        infowindow.open(map, marker2);
     });
     
     //Add marker for video clip c
-    var marker = new google.maps.Marker({
+    var marker3 = new google.maps.Marker({
          map:map,
          position: new google.maps.LatLng(-50,-120),
          title: "Encoding RNA Video"
      }); 
 
-    google.maps.event.addListener(marker, 'click', function() {
+    google.maps.event.addListener(marker3, 'click', function() {
         infowindow.setContent(video_player("clip-c"));
-        infowindow.open(map, marker);
+        infowindow.open(map, marker3);
     });
     
     //  google.maps.event.addListener(map, 'click', function(event) {

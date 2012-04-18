@@ -118,7 +118,7 @@ function resizeMapDiv() {
 }
 
 function load() {
-    //resizeMapDiv();
+    resizeMapDiv();
     var latlng = new google.maps.LatLng(centreLat, centreLon);
     var myOptions = {
         zoom: initialZoom,
@@ -153,6 +153,11 @@ function load() {
         infowindow.open(map, marker1);
     });
     
+    google.maps.event.addDomListener(document.getElementById("go_to_marker1"), "click", function(e) {
+      map.setZoom(3);
+      map.panTo(marker1.getPosition());
+    });
+    
     //Add marker for video clip b
     var marker2 = new google.maps.Marker({
          map:map,
@@ -165,6 +170,11 @@ function load() {
         infowindow.open(map, marker2);
     });
     
+    google.maps.event.addDomListener(document.getElementById("go_to_marker2"), "click", function(e) {
+      map.setZoom(2);
+      map.panTo(marker2.getPosition());
+    });
+    
     //Add marker for video clip c
     var marker3 = new google.maps.Marker({
          map:map,
@@ -175,6 +185,11 @@ function load() {
     google.maps.event.addListener(marker3, 'click', function() {
         infowindow.setContent(video_player("clip-c"));
         infowindow.open(map, marker3);
+    });
+    
+    google.maps.event.addDomListener(document.getElementById("go_to_marker3"), "click", function(e) {
+      map.setZoom(5);
+      map.panTo(marker3.getPosition());
     });
     
     //  google.maps.event.addListener(map, 'click', function(event) {
@@ -211,4 +226,7 @@ function placeMarker(location) {
     
 $(document).ready(function(){
    load();
+   $(window).resize(function() {
+      resizeMapDiv();
+   });
 });

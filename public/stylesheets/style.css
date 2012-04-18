@@ -3,7 +3,12 @@
 }
 #gmap,
 #map {
-  width: 100%;
+  width: 80%;
+  float: right;
   height: 580px;
   border: 4px solid #ccc;
+}
+#directions {
+  width: 15%;
+  float: left;
 }

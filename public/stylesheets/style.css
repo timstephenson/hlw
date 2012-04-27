@@ -12,6 +12,7 @@
   width: 15%;
   float: left;
 }
-.container {
+.container,
+.navbar-fixed-top .container {
   width: 1150px;
 }

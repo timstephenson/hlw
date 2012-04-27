@@ -51,7 +51,7 @@ GMICMapType.prototype.realeaseTile = function(tile) {
     tile=null;
 }
 
-GMICMapType.prototype.name = "How Life Works";
+GMICMapType.prototype.name = "Gene Expression";
 GMICMapType.prototype.alt = "Visual Summary of How Life Works";
 GMICMapType.prototype.setOpacity = function(newOpacity) {
     this.opacity = newOpacity;

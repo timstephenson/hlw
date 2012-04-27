@@ -22,6 +22,7 @@ GMICMapType.prototype.getTile = function(coord, zoom, ownerDocument) {
     	if (tilex>=c) tilex=tilex%c;
     	if (tiley<0) tiley=c+tiley%c;
     	if (tiley>=c) tiley=tiley%c;
+    	console.log("Var tilex: " + tilex + " tiley: " + tiley);
     } else {
       if ((tilex<0)||(tilex>=c)||(tiley<0)||(tiley>=c)) {
 	      var blank = ownerDocument.createElement('DIV');
@@ -30,24 +31,16 @@ GMICMapType.prototype.getTile = function(coord, zoom, ownerDocument) {
 	      return blank;
       }
     }
+    //var path = "https://s3-us-west-1.amazonaws.com//hlw-tiles/set_3/" + zoom + "/";
+    var path = "http://www.dbpoc.com/zoom/" + zoom + "/";
+    var name =  zoom + "-" + tilex + "-" + tiley + ".jpg";
+    console.log("The name is: " + name);
     var img = ownerDocument.createElement('IMG');
-    var d = tilex;
-    var e = tiley;
-    var f = "t";
-    for (var g = 0; g < zoom; g++) {
-        c /= 2;
-        if (e < c) {
-            if (d < c) { f += "q" }
-            else { f += "r"; d -= c }
-        } else {
-            if (d < c) { f += "t"; e -= c }
-            else { f += "s"; d -= c; e -= c }
-        }
-    }
-    img.id = "t_" + f;
+    img.id = "tile_" + name ;
     img.style.width = this.tileSize.width + 'px';
-    img.style.height = this.tileSize.height + 'px';        
-    img.src = "https://s3-us-west-1.amazonaws.com//hlw-tiles/set_2/level_" + get_level(zoom) + "/" + f + ".jpg";
+    img.style.height = this.tileSize.height + 'px';            
+    img.src = path + name;
+    
     this.Cache.push(img);
     return img;
 }
@@ -77,31 +70,9 @@ function getWindowHeight() {
     }
     return 0;
 }
-    
-function get_level(zoom) {
-  var level = 0;
-  switch (zoom) {
-    case 2:
-      level = 3;
-      break;
-    case 3:
-      level = 4;
-      break;
-    case 4:
-      level = 4;
-      break;
-    case 5:
-      level = 5;
-      break;
-    default:
-      level = 3;
-  }
-  return level;
-}
 
 function resizeMapDiv() {
     //Resize the height of the div containing the map.
-
     //Do not call any map methods here as the resize is called before the map is created.
     var d=document.getElementById("map");
 
@@ -118,12 +89,12 @@ function resizeMapDiv() {
 }
 
 function load() {
-    resizeMapDiv();
+    //resizeMapDiv();
     var latlng = new google.maps.LatLng(centreLat, centreLon);
     var myOptions = {
         zoom: initialZoom,
         minZoom: 2,
-        maxZoom: 5,
+        maxZoom: 7,
         center: latlng,
         panControl: true,
         zoomControl: true,
@@ -144,7 +115,7 @@ function load() {
     //Add marker for video clip a
     var marker1 = new google.maps.Marker({
          map:map,
-         position: new google.maps.LatLng(-35,-96),
+         position: new google.maps.LatLng(27,-142 ),
          title: "Transcription Video"
      }); 
 
@@ -154,14 +125,14 @@ function load() {
     });
     
     google.maps.event.addDomListener(document.getElementById("go_to_marker1"), "click", function(e) {
-      map.setZoom(3);
+      map.setZoom(5);
       map.panTo(marker1.getPosition());
     });
     
     //Add marker for video clip b
     var marker2 = new google.maps.Marker({
          map:map,
-         position: new google.maps.LatLng(50,80),
+         position: new google.maps.LatLng(40, -47),
          title: "Encoding RNA Video"
      }); 
 
@@ -171,14 +142,14 @@ function load() {
     });
     
     google.maps.event.addDomListener(document.getElementById("go_to_marker2"), "click", function(e) {
-      map.setZoom(2);
+      map.setZoom(4);
       map.panTo(marker2.getPosition());
     });
     
     //Add marker for video clip c
     var marker3 = new google.maps.Marker({
          map:map,
-         position: new google.maps.LatLng(-50,-120),
+         position: new google.maps.LatLng(-5,-40),
          title: "Encoding RNA Video"
      }); 
 
@@ -188,8 +159,76 @@ function load() {
     });
     
     google.maps.event.addDomListener(document.getElementById("go_to_marker3"), "click", function(e) {
-      map.setZoom(5);
+      map.setZoom(3);
       map.panTo(marker3.getPosition());
+    });
+    
+    //Add marker for video clip d
+    var marker4 = new google.maps.Marker({
+         map:map,
+         position: new google.maps.LatLng(-63,-40),
+         title: "Messenger RNA Transport Video"
+     }); 
+
+    google.maps.event.addListener(marker4, 'click', function() {
+        infowindow.setContent(video_player("clip-d"));
+        infowindow.open(map, marker4);
+    });
+    
+    google.maps.event.addDomListener(document.getElementById("go_to_marker4"), "click", function(e) {
+      map.setZoom(4);
+      map.panTo(marker4.getPosition());
+    });
+    
+    //Add marker for video clip e
+    var marker5 = new google.maps.Marker({
+         map:map,
+         position: new google.maps.LatLng(-50, 123),
+         title: "Ribosome Translation"
+     }); 
+
+    google.maps.event.addListener(marker5, 'click', function() {
+        infowindow.setContent(video_player("clip-e"));
+        infowindow.open(map, marker5);
+    });
+    
+    google.maps.event.addDomListener(document.getElementById("go_to_marker5"), "click", function(e) {
+      map.setZoom(4);
+      map.panTo(marker5.getPosition());
+    });
+    
+    //Add marker for video clip f
+    var marker6 = new google.maps.Marker({
+         map:map,
+         position: new google.maps.LatLng(5, 155),
+         title: "Actin Protein Translation"
+     }); 
+
+    google.maps.event.addListener(marker6, 'click', function() {
+        infowindow.setContent(video_player("clip-f"));
+        infowindow.open(map, marker6);
+    });
+    
+    google.maps.event.addDomListener(document.getElementById("go_to_marker6"), "click", function(e) {
+      map.setZoom(3);
+      map.panTo(marker6.getPosition());
+    });
+    
+    //Add marker for video clip g
+    var marker7 = new google.maps.Marker({
+         map:map,
+         position: new google.maps.LatLng(30, 51),
+         title: "Amino Acids"
+     }); 
+
+    google.maps.event.addListener(marker7, 'click', function() {
+        infowindow.setContent(video_player("clip-g"));
+        infowindow.open(map, marker7);
+    });
+    
+    google.maps.event.addDomListener(document.getElementById("go_to_marker7"), "click", function(e) {
+      map.setZoom(4);
+      map.panTo(marker7.getPosition());
     });
     
     //  google.maps.event.addListener(map, 'click', function(event) {
@@ -226,7 +265,7 @@ function placeMarker(location) {
     
 $(document).ready(function(){
    load();
-   $(window).resize(function() {
-      resizeMapDiv();
-   });
+   // $(window).resize(function() {
+   //    resizeMapDiv();
+   // });
 });

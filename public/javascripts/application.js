@@ -115,7 +115,7 @@ function load() {
     //Add marker for video clip a
     var marker1 = new google.maps.Marker({
          map:map,
-         position: new google.maps.LatLng(27,-142 ),
+         position: new google.maps.LatLng(22,-142 ),
          title: "Transcription Video"
      }); 
 
@@ -125,7 +125,7 @@ function load() {
     });
     
     google.maps.event.addDomListener(document.getElementById("go_to_marker1"), "click", function(e) {
-      map.setZoom(5);
+      map.setZoom(6);
       map.panTo(marker1.getPosition());
     });
     
@@ -142,7 +142,7 @@ function load() {
     });
     
     google.maps.event.addDomListener(document.getElementById("go_to_marker2"), "click", function(e) {
-      map.setZoom(4);
+      map.setZoom(5);
       map.panTo(marker2.getPosition());
     });
     

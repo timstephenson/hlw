@@ -231,6 +231,23 @@ function load() {
       map.panTo(marker7.getPosition());
     });
     
+    //Add marker for web page fate of primary transcript
+    var marker8 = new google.maps.Marker({
+         map:map,
+         position: new google.maps.LatLng(-5,-75),
+         title: "Fate of Primary Transcript"
+     }); 
+
+    google.maps.event.addListener(marker8, 'click', function() {
+        infowindow.setContent("<iframe src='http://websterfw.com/published/digfir_ebook/rnaprocessing2.html' width='600' height='300'></iframe>");
+        infowindow.open(map, marker8);
+    });
+    
+    google.maps.event.addDomListener(document.getElementById("go_to_marker8"), "click", function(e) {
+      map.setZoom(3);
+      map.panTo(marker8.getPosition());
+    });
+    
     //  google.maps.event.addListener(map, 'click', function(event) {
     //    placeMarker(event.latLng);
     //  });
